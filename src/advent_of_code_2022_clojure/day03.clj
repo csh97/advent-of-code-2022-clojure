@@ -21,19 +21,17 @@
   (->> (slurp "resources/day03.txt")
        (split-lines)))
 
-(defn find-total-priority [bag-sets]
-  (->> bag-sets
-       (mapcat #(apply intersection %))
+(defn find-total-priority [bags]
+  (->> bags
+       (mapcat #(apply intersection (map set %)))
        (reduce calc-priority 0)))
 
 (time (->> input-split
            (map partition-in-half)
-           (map #(map set %))
            find-total-priority))
 ;7716
 
 (time (->> input-split
-           (map set)
            (partition 3)
            find-total-priority))
 ;2973
