@@ -2,10 +2,10 @@
 <project version="4">
   <component name="LeiningenProjectsManager">
     <option name="projectFiles">
-      <set>
+      <list>
         <option value="file://$PROJECT_DIR$/project.clj" />
-      </set>
+      </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" project-jdk-name="17 graal" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="16" project-jdk-type="JavaSDK" />
 </project>
