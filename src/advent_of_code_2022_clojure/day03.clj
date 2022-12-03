@@ -4,16 +4,13 @@
             [clojure.string :as str]))
 
 (defn lower-case-to-num [letter]
-  (- (int (last letter)) 96))
+  (- (int letter) 96))
 
 (defn upper-case-to-num [letter]
-  (- (int (last letter)) 38))
-
-(defn uppercase? [letter]
-  (= letter (str/upper-case letter)))
+  (- (int letter) 38))
 
 (defn calc-priority [priority letter]
-  (if (uppercase? letter)
+  (if (Character/isUpperCase letter)
     (+ priority (upper-case-to-num letter))
     (+ priority (lower-case-to-num letter))))
 
@@ -22,8 +19,7 @@
 
 (def input-split
   (->> (slurp "resources/day03.txt")
-       (split-lines)
-       (map #(split % #""))))
+       (split-lines)))
 
 (defn find-total-priority [bag-sets]
   (->> bag-sets
