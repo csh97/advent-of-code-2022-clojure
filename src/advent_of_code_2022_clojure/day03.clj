@@ -27,16 +27,18 @@
 
 (defn find-total-priority [bag-sets]
   (->> bag-sets
-       (map #(intersection (first %) (second %) (last %)))
+       (map #(apply intersection %))
        (map #(reduce calc-priority 0 %))
        (apply +)))
 
-(->> input-split
-     (map partition-in-half)
-     (map #(map set %))
-     find-total-priority);7716
+(time (->> input-split
+           (map partition-in-half)
+           (map #(map set %))
+           find-total-priority))
+;7716
 
-(->> input-split
-     (map set)
-     (partition 3)
-     find-total-priority);2973
+(time (->> input-split
+           (map set)
+           (partition 3)
+           find-total-priority))
+;2973
