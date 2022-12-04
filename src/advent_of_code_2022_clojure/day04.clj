@@ -4,7 +4,7 @@
 
 (defn generate-range [s]
   (let [nums (split s #"-")]
-    (set (range (Integer/parseInt (first nums)) (+ (Integer/parseInt (last nums)) 1)))))
+    (set (range (Integer/parseInt (first nums)) (inc (Integer/parseInt (last nums)))))))
 
 (defn fully-contains? [[set1 set2]]
   (or (subset? set1 set2) (subset? set2 set1)))
