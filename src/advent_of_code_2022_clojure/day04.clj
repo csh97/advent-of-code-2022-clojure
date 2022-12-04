@@ -18,14 +18,12 @@
        split-lines
        (map generate-range)))
 
-(defn count-overlaps [overlap-fn]
-  (->> ranges
-       (map overlap-fn)
-       (filter true?)
-       count))
-
-(time (count-overlaps fully-contains?))
+(time (->> ranges
+           (filter fully-contains?)
+           count))
 ;433
 
-(time (count-overlaps overlaps?))
+(time (->> ranges
+           (filter overlaps?)
+           count))
 ;852
