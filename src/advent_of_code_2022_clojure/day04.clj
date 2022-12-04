@@ -3,8 +3,9 @@
             [clojure.set :refer [subset? intersection]]))
 
 (defn generate-range [s]
-  (let [nums (split s #"-")]
-    (set (range (Integer/parseInt (first nums)) (inc (Integer/parseInt (last nums)))))))
+  (let [[num1 num2 num3 num4] (map #(Integer/parseInt %) (split s #",|-"))]
+    [(set (range num1 (inc num2)))
+     (set (range num3 (inc num4)))]))
 
 (defn fully-contains? [[set1 set2]]
   (or (subset? set1 set2) (subset? set2 set1)))
@@ -15,10 +16,7 @@
 (def ranges
   (->> (slurp "resources/day04.txt")
        split-lines
-       (map #(split % #","))
-       flatten
-       (map generate-range)
-       (partition 2)))
+       (map generate-range)))
 
 (defn count-overlaps [overlap-fn]
   (->> ranges
