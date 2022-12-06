@@ -16,7 +16,7 @@
          letters (-> message
                      (str/split #""))
          counter 0]
-    (if (or (= size (count curr)) (= (dec size) (count curr)))
+    (if (= size (count curr))
       (let [new-curr (remove-and-add curr (nth letters counter) size)]
         (if (= size (count (distinct new-curr)))
           (inc counter)
